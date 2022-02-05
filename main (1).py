@@ -1,6 +1,6 @@
 #beta test ui
-#do not edit without group permission
-import PySimpleGUI as sim
+#do note edit without team permission
+import PySimpleGui as sim
 sim.theme('DarkTeal6')
 
 sitename = ""
@@ -9,7 +9,7 @@ password = ""
 sitemirror = "" #mirrors to be turned into truncated strings as apposed to their tuple counterparts
 usermirror = ""
 passmirror = ""
-
+#default main menu layout goes here:
 Main_Menu_Layout = [
             [sim.Text('                              Grid Lock         ')],
             [sim.Text(' \n \n \n \n \n \n \n')],
@@ -22,21 +22,22 @@ Main_Menu_Layout = [
             [sim.InputText()],
             [sim.Button('Save'), sim.Button('Load')]
                    ] #end of default window
-# __________________
+#__________________
 
 #----launch window
 window = sim.Window('Grid Lock', Main_Menu_Layout)
 
-# Event Loop to process "events"
-# sim.popup_cancel('popup_cancel')
+# MAIN: Event Loop to process "events"
 while 1 == 1:
     event, values = window.read()
     sitename = (event, values[0])
     username = (event, values[1])
     password = (event, values[2])
+    #these commands turn tuplets into single string values.
     usermirror = (str(username)[10:-2])
     sitemirror = (str(sitename)[10:-2])
     passmirror = (str(password)[10:-2])
+    #the next following if tree
     if event in (sim.WIN_CLOSED, 'Cancel'): #if closed this happens
         break
         # basic debug strings for testing purposes, keep these but comment them out
@@ -60,4 +61,5 @@ while 1 == 1:
                 endflag = True
                 window2.close()
                 print("Back")
+
 
