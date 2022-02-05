@@ -9,6 +9,7 @@ password = ""
 sitemirror = "" #mirrors to be turned into truncated strings as apposed to their tuple counterparts
 usermirror = ""
 passmirror = ""
+
 #default main menu layout goes here:
 Main_Menu_Layout = [
             [sim.Text('                              Grid Lock         ')],
