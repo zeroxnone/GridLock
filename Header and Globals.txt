@@ -1,0 +1,9 @@
+
+import PySimpleGui as sim
+#in this case, we are importing PySimpleGUI
+sitename = ""
+username = ""
+password = ""
+sitemirror = "" #mirrors to be turned into truncated strings as apposed to their tuple counterparts
+usermirror = ""
+passmirror = ""
