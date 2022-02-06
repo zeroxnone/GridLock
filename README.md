@@ -8,3 +8,5 @@ If you have access to edit the files, do not edit main.py without permission fro
 The update process:
 Edit a .txt section from one of the available .txt files. (they are labeled by content)
 Let others know what changes you made and why.
+If you aren't sure if you should change something, you can make a pull request by selecting the file and leaving a branch comment at the bottom near
+"commit changes"
