@@ -1,0 +1,17 @@
+#default main menu layout goes here:
+Main_Menu_Layout = [
+            [sim.Text('                              Grid Lock         ')],
+            [sim.Text(' \n \n \n \n \n \n \n')],
+           #[sim.Input(key='-IN1-')], #key for mirroring
+            [sim.Text('App/Site Name')],
+            [sim.InputText()],
+            [sim.Text('Username')],
+            [sim.InputText()],      # these are all on different lines to keep them apart
+            [sim.Text('Password')],
+            [sim.InputText()],
+            [sim.Button('Save'), sim.Button('Load')]
+                   ] #end of default window
+#__________________
+
+#----launch window
+window = sim.Window('Grid Lock', Main_Menu_Layout)
