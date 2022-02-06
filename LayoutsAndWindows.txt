@@ -1,4 +1,7 @@
 #default main menu layout goes here:
+
+sim.theme('DarkTeal6')
+
 Main_Menu_Layout = [
             [sim.Text('                              Grid Lock         ')],
             [sim.Text(' \n \n \n \n \n \n \n')],
