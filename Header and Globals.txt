@@ -4,6 +4,9 @@ import PySimpleGui as sim
 sitename = ""
 username = ""
 password = ""
+
 sitemirror = "" #mirrors to be turned into truncated strings as apposed to their tuple counterparts
 usermirror = ""
 passmirror = ""
+
+#end of global variables
