@@ -1,3 +1,7 @@
+#default main menu layout goes here:
+Main_Menu_width = X = 600     #change width and height of default window
+Main_Menu_Height = Y = 400
+
 Main_Menu_Layout = [
             [sim.Text('Grid Lock         ')],
             [sim.Text(' \n \n \n \n \n')], #top margin
