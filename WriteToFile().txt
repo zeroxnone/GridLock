@@ -1,2 +1,9 @@
 #put a single string argument save function
+name = "John" 
+file = open("test.txt", "w")
+file.write(name)
+file.close()
+
+print("file writing complete")
+
 #please include the phrase: print("file writing complete") so we can debug this later.
