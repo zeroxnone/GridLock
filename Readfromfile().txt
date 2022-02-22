@@ -3,4 +3,4 @@
 file = open("griddump.txt", "r")
 
 print(file.readline())
-file.close
+file.close()
