@@ -1,4 +1,4 @@
-
+import global
 import PySimpleGui as sim
 #in this case, we are importing PySimpleGUI
 sitename = ""
