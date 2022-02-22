@@ -1,5 +1,0 @@
-name = "Gridlock"
-file = open("test.txt", "w")
-file.write(name)
-file.close
-
