@@ -1,0 +1,25 @@
+During Gridlcok AES encryption, the process goes as follows:
+We Take username and Password as one string divided by two obscure characters (;;)
+Take each individual character and add it to the list (flatarr[]) for later reference. Note: they are encoded in utf-32 format, meaning they are base 32 and not base 10 or ascii
+After a few compile tests to make sure the string is valid, the byte to grid process looks like this:
+
+1. The grid size is the square root of the string length, rounded up. (ex: 16 characters means 4x4 grid. but 17 characters requires 5x5)
+2. each character is fed into the first available space on each row, then the first row of each column. Top to bottom, left to right.
+3. Once every byte is put in a grid, we are ready to apply changes.
+
+AES encryption changes go like this:
+i. First we take the total ascii value of each of the characters in the Unique_Key).
+ii. This value is added to each of the bytes sitting in the grid. (this is necessary to protect your passsword from other Gridlock clients)
+iii. Establish the encryption key
+  a. roll a series of random numbers between 1 and 4, appending them to a string (such as 14434123323)
+  b. roll larger secondary numbers to use as arguments (between 3 and 1024, prime numbers only)
+  c. when paired correctly, they would read as [1,30:2,5:3,9:]
+  d. using this chart:
+  1-add
+  2-multiply
+  3-shiftrows [down]
+  4-shift columns [right]
+   the example key [1,30:2,5:3,9:] would add 30 to every byte, then multiply each byte by 5, then shift each row in the grid 9 down
+ iv. apply these changes in a cycle until the maximum amount of iterations are reached. in this beta build, we will do 25 iterations.
+ 
+  
