@@ -12,7 +12,7 @@ i. First we take the total ascii value of each of the characters in the Unique_K
 ii. This value is added to each of the bytes sitting in the grid. (this is necessary to protect your passsword from other Gridlock clients)
 iii. Establish the encryption key
   a. roll a series of random numbers between 1 and 4, appending them to a string (such as 14434123323)
-  b. roll larger secondary numbers to use as arguments (between 3 and 1024, prime numbers only)
+  b. roll larger secondary numbers to use as arguments (between 3 and 256, prime numbers only)
   c. when paired correctly, they would read as [1,30:2,5:3,9:]
   d. using this chart:
   1-add
@@ -21,5 +21,12 @@ iii. Establish the encryption key
   4-shift columns [right]
    the example key [1,30:2,5:3,9:] would add 30 to every byte, then multiply each byte by 5, then shift each row in the grid 9 down
  iv. apply these changes in a cycle until the maximum amount of iterations are reached. in this beta build, we will do 25 iterations.
- 
+
+How does Gridlock change byte values consistently?
+1. a 32 bit byte is turned into a massive base 32 number, then translated to decimal.
+2. The decimal version is passed to a function that adds or multiplies the appropriate amount to the decimal value.
+3. before leaving the function, the base is turned back to 32.
+4. The respective function (add/multiply) will return the base 32 number in byte form
+5. The returned byte will replace the old one on the grid
+
   
