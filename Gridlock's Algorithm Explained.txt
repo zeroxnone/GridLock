@@ -11,15 +11,14 @@ AES encryption changes go like this:
 i. First we take the total ascii value of each of the characters in the Unique_Key).
 ii. This value is added to each of the bytes sitting in the grid. (this is necessary to protect your passsword from other Gridlock clients)
 iii. Establish the encryption key
-  a. roll a series of random numbers between 1 and 4, appending them to a string (such as 14434123323)
-  b. roll larger secondary numbers to use as arguments (between 3 and 256, prime numbers only)
-  c. when paired correctly, they would read as [1,30:2,5:3,9:]
-  d. using this chart:
+  a. roll numbers to use as arguments (between 3 and 256, prime numbers only)
+  b. when paired correctly, they would read as [1,30:2,5:3,9:4:20]
+  c. using this chart:
   1-add
   2-multiply
   3-shiftrows [down]
   4-shift columns [right]
-   the example key [1,30:2,5:3,9:] would add 30 to every byte, then multiply each byte by 5, then shift each row in the grid 9 down
+   the example key [1,29:2,5:3,9:,4:17] would add 29 to every byte, then multiply each byte by 5, then shift each row in the grid 9 down, then each column to the right 17 times
  iv. apply these changes in a cycle until the maximum amount of iterations are reached. in this beta build, we will do 25 iterations.
 
 How does Gridlock change byte values consistently?
