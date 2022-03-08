@@ -1,5 +1,5 @@
 During Gridlcok AES encryption, the process goes as follows:
-We Take username and Password as one string divided by two obscure characters (;;)
+We Take username and Password as one string divided by two obscure characters (¶¶)
 Take each individual character and add it to the list (flatarr[]) for later reference. Note: they are encoded in utf-32 format, meaning they are base 32 and not base 10 or ascii
 After a few compile tests to make sure the string is valid, the byte to grid process looks like this:
 
