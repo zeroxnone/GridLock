@@ -17,5 +17,16 @@ Main_Menu_Layout = [
                    ] #end of default window
 #__________________
 
-#----launch window
+#----launch window (For Key Validator)
 window = sim.Window('Grid Lock', Main_Menu_Layout, size = (X, Y), finalize = True)
+Unique_Menu_width = X = 500    #change width and height of default window
+Unique_Menu_Height = Y = 350
+sim.theme('LightGrey6')
+Unique_Menu_Layout = [
+            [sim.Text('  GridLock is working to Validate your Unique User Key   ')],
+            [sim.Text(' \n \n\n \n')], #top margin
+            #[sim.Input(key='-IN1-')], #key for mirroring
+            [sim.Text(' '),sim.Button('Quit')]
+                   ] #end of default window
+#__________________
+#----launch window
