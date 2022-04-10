@@ -14,9 +14,9 @@ def random_num_prime(m):
       return m
 
 def random_num(x,y):
-  num = random.randint(3,87)
+  num = random.randint(3,9)
   while random_num_prime(num) != num:
-    num = random_num(3,197)
+    num = random_num(3,9)
   return num
 
 
@@ -194,7 +194,7 @@ def gridlock_encrypt(AppName, UsePassString):
     # put the string on a grid
     clean_grid = Grid_Construct(strtoNormalarray(User_inf)) # turn the normal array into a list of characters
     basic_offset = findasciitotal(unique_user_key)
-    advanced_offset = int(findasciitotal(unique_user_key) * 500 /7 +71)     #finding the ascii value and distorting it to make our offset
+    advanced_offset = int(findasciitotal(unique_user_key) * 5)   #finding the ascii value and distorting it to make our offset
     print(clean_grid)
     # turn's values of grid into bytes
     for r in clean_grid:  #for each row
@@ -208,15 +208,19 @@ def gridlock_encrypt(AppName, UsePassString):
         for e in r:
             e = addTo_byte(e,advanced_offset)
     # in a loop of 10 times, do each of the 4 processes necessary
-    for i in range(75): #start of encrpytion loop !!!!
+    for i in range(14): #start of encrpytion loop !!!!
         for r in clean_grid:
             print(r)
             for i in range(len(r)):
-                r[i] = addTo_byte(r[i],instruction_stack[0]+300) #add the appropriate value
+                r[i] = addTo_byte(r[i],instruction_stack[0]) #add the appropriate value
         print("new bytes before moving", clean_grid)
+        mult_total = 0 #moving to multiplication process
         for r in clean_grid:
             for i in range(len(r)):
-                r[i] = addTo_byte(r[i], instruction_stack[1]*15) #multiply the appropriate value
+                mult_total += instruction_stack[1]
+        ("multiplying\n")
+        for i in range(len(r)):
+            r[i] = mul_byte(r[i], int(mult_total/19))  # change the mult total the appropriate value
         for i in range(instruction_stack[2]):
             clean_grid = shiftdown(clean_grid) #shift down
         print("shifted down")
@@ -241,7 +245,12 @@ def gridlock_encrypt(AppName, UsePassString):
 
     print(finished_password)
     file = open("passdump.txt", "w", encoding='utf-32')
+    for r in used_grid:
+        file.write(str(used_grid))
+        file.write('\n')
+    file.write('\n')
     file.write(finished_password)
+    file.write('\n')
     file.write(random_key)
     file.close()
 
