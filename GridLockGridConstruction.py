@@ -2,6 +2,7 @@ import random  # use random prime function need to import random package.
 import math
 from GridLockEncryptionBoard import *
 import array
+import base64
 
 def random_num_prime(m):
   if m > 1:
@@ -13,9 +14,9 @@ def random_num_prime(m):
       return m
 
 def random_num(x,y):
-  num = random.randint(3,97)
+  num = random.randint(3,87)
   while random_num_prime(num) != num:
-    num = random_num(3,97)
+    num = random_num(3,197)
   return num
 
 
@@ -192,7 +193,8 @@ def gridlock_encrypt(AppName, UsePassString):
     print(instruction_stack)
     # put the string on a grid
     clean_grid = Grid_Construct(strtoNormalarray(User_inf)) # turn the normal array into a list of characters
-    offset = int(findasciitotal(unique_user_key) * 3 + 17 )      #finding the ascii value and distorting it to make our offset
+    basic_offset = findasciitotal(unique_user_key)
+    advanced_offset = int(findasciitotal(unique_user_key) * 500 /7 +71)     #finding the ascii value and distorting it to make our offset
     print(clean_grid)
     # turn's values of grid into bytes
     for r in clean_grid:  #for each row
@@ -204,32 +206,46 @@ def gridlock_encrypt(AppName, UsePassString):
     # add the total ascii value of the unique key to each of the bytes in the grid
     for r in clean_grid:
         for e in r:
-            e = addTo_byte(e,offset)
+            e = addTo_byte(e,advanced_offset)
     # in a loop of 10 times, do each of the 4 processes necessary
-    for i in range(99): #start of encrpytion loop !!!!
+    for i in range(75): #start of encrpytion loop !!!!
         for r in clean_grid:
             print(r)
             for i in range(len(r)):
-                r[i] = addTo_byte(r[i],instruction_stack[0]) #add the appropriate value
+                r[i] = addTo_byte(r[i],instruction_stack[0]+300) #add the appropriate value
         print("new bytes before moving", clean_grid)
         for r in clean_grid:
             for i in range(len(r)):
-                r[i] = addTo_byte(r[i], instruction_stack[1]) #multiply the appropriate value
+                r[i] = addTo_byte(r[i], instruction_stack[1]*15) #multiply the appropriate value
         for i in range(instruction_stack[2]):
             clean_grid = shiftdown(clean_grid) #shift down
         print("shifted down")
         for i in range(instruction_stack[3]):
             clean_grid = shiftright(clean_grid) #shift right
         print("shifted right")
-    # turn every byte back int utf-32
+    # turn every byte back int utf-32 characters
     used_grid = clean_grid
     print("final bytes: ", used_grid)
-    for r in used_grid:  # for each row
-        for i in range(len(r)):  # for every element in each row
-            r[i] = byteTo_char(r[i])  # turn all bytes to char
+    #for r in used_grid:  # for each row
+        #for i in range(len(r)):  # for every element in each row
+           #r[i] = byteTo_char(r[i])  # turn all bytes to char
     print("final result: \n", used_grid)
-    print(used_grid[0][0])
     # save result in utf-32
+    finished_password = ""
+    for r in clean_grid:
+        row_password = ""
+        for e in r:
+            row_password += (e.decode('utf-32'))
+        finished_password += row_password
+
+
+    print(finished_password)
+    file = open("passdump.txt", "w", encoding='utf-32')
+    file.write(finished_password)
+    file.write(random_key)
+    file.close()
+
+
     # put key underneath for later
-gridlock_encrypt("app_name_test","UsernamePassword")
+#gridlock_encrypt("app_name_test","KentuckyHorse")
 
