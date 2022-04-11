@@ -14,9 +14,9 @@ def random_num_prime(m):
       return m
 
 def random_num(x,y):
-  num = random.randint(3,9)
+  num = random.randint(3,32)
   while random_num_prime(num) != num:
-    num = random_num(3,9)
+    num = random_num(3,32)
   return num
 
 
@@ -24,7 +24,7 @@ def Grid_Gen_Key():
     random_key = "["  # declare  empty list to store generated random numberrs.
     for i in range(4):  # call prime function random() 4 times
        random_key += (str(i + 1) + ",")
-       random_key += str(random_num(3,37))
+       random_key += str(random_num(3,34))
 
      # store generated random number as string.
        if i < 3:
@@ -194,7 +194,7 @@ def gridlock_encrypt(AppName, UsePassString):
     # put the string on a grid
     clean_grid = Grid_Construct(strtoNormalarray(User_inf)) # turn the normal array into a list of characters
     basic_offset = findasciitotal(unique_user_key)
-    advanced_offset = int(findasciitotal(unique_user_key) * 5)   #finding the ascii value and distorting it to make our offset
+    advanced_offset = int(findasciitotal(unique_user_key) * 17)   #finding the ascii value and distorting it to make our offset
     print(clean_grid)
     # turn's values of grid into bytes
     for r in clean_grid:  #for each row
@@ -212,7 +212,7 @@ def gridlock_encrypt(AppName, UsePassString):
         for r in clean_grid:
             print(r)
             for i in range(len(r)):
-                r[i] = addTo_byte(r[i],instruction_stack[0]) #add the appropriate value
+                r[i] = addTo_byte(r[i],int(instruction_stack[0] + int(0.1*len(User_inf))/int(3.2*instruction_stack[0]))) #add the appropriate value
         print("new bytes before moving", clean_grid)
         mult_total = 0 #moving to multiplication process
         for r in clean_grid:
@@ -220,7 +220,7 @@ def gridlock_encrypt(AppName, UsePassString):
                 mult_total += instruction_stack[1]
         ("multiplying\n")
         for i in range(len(r)):
-            r[i] = mul_byte(r[i], int(mult_total/19))  # change the mult total the appropriate value
+            r[i] = mul_byte(r[i], int(mult_total/(16 + int(3.1*instruction_stack[1]) + int(0.9*len(User_inf)-6))))  # change the mult total the appropriate value
         for i in range(instruction_stack[2]):
             clean_grid = shiftdown(clean_grid) #shift down
         print("shifted down")
@@ -245,16 +245,54 @@ def gridlock_encrypt(AppName, UsePassString):
 
     print(finished_password)
     file = open("passdump.txt", "w", encoding='utf-32')
+    file.write(str("<" + AppName + ">"))
+    file.write('\n')
     for r in used_grid:
-        file.write(str(used_grid))
+        file.write(str(r))
         file.write('\n')
     file.write('\n')
     file.write(finished_password)
     file.write('\n')
     file.write(random_key)
     file.close()
-
+    return(finished_password)
 
     # put key underneath for later
-#gridlock_encrypt("app_name_test","KentuckyHorse")
+gridlock_encrypt("app_name_test","username;;password;")
 
+#-----decryption process below
+
+
+def gl_scan_encrypted_file(AppName,file_name):
+    file = open(file_name, "r", encoding='utf-32')
+    intake = file.readline()
+
+    flag = 0
+    if intake[1:-2] == AppName:
+        print("file approved!")
+        flag = 1
+    scanned_grid = []
+    if flag == 1:
+        # the scanned grid is an attempt to read the file's byte rows
+        print("the grid from this file looks like: ")
+        while (intake != "" and intake != " " and intake != EOFError and intake != None):
+            intake = file.readline()
+            if str(intake):
+                if str(intake)[0:2] == '[b':
+                    scanned_grid.append(intake)
+        file.close()
+        for i in range(len(scanned_grid)):
+            if scanned_grid[i] == "" or scanned_grid[i] == " " or scanned_grid[i] == None:
+                scanned_grid.remove(scanned_grid[i])
+        for r in scanned_grid:
+            print(r)
+        return scanned_grid
+
+def gridlock_decrypt(AppName,file_name):
+    encrypted_grid = gl_scan_encrypted_file(AppName,file_name) #scan with passed parameters
+
+    #do the startup in reverse
+    
+    #all information scanned, moving on
+    #start decryption
+gridlock_decrypt("app_name_test","passdump.txt")
