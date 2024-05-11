@@ -49,7 +49,7 @@ print("since we've multiplied by 3, the byte is 3x higher, and its symbol is now
 #Add the ascii value of the User Unique_Key to each byte as our offset (don't forget this)
 print("All tests successful")
 
-#-------- Beneath are Organized functions Gridlock wrote to make byte translation easier
+#-------- Beneath are Organized functions to make byte translation easier
 #now we define our functions for easy cleanup, now that the tests are out of the way
 #turn byte to integer
 #!!!THESE FUNCTIONS CANNOT BE FOUND ONLINE, DO NOT ERASE, THEY ARE ONE OF A KIND
