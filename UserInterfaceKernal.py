@@ -1,5 +1,5 @@
 #beta test ui
-#do note edit without team permission
+#do note edit
 import PySimpleGUI as sim
 sim.theme('LightGrey6')
 
