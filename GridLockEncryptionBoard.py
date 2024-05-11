@@ -92,7 +92,7 @@ def mul_byte(thebyte,mulvalue):  #turn a byte into a number, add to it, then put
     print("multiplied,", mulvalue)
     return new_byte
 #decrpytion mirrors-------
-def subfrom_byte(thebyte,sub_value):  #turn a byte into a number, add to it, then put it back
+def subfrom_byte(thebyte,sub_value):  #turn a byte into a number, sub from it, then put it back
     new_value = byteTo_integer(thebyte) - sub_value
     new_byte = integerTo_byte(new_value)
     return new_byte
