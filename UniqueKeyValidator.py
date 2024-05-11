@@ -7,7 +7,7 @@ verified = False
 global tempkey
 tempkey = ""
 global opt_out
-opt_out = 0
+opt_out = 0   #checks to see if menu is closed early
 
 
 
