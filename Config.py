@@ -1,10 +1,7 @@
 import global
 import PySimpleGui as sim
 #in this case, we are importing PySimpleGUI
-from Crypto.Cipher import AES
 import os
-import hashlib
-from Crypto import Random
 import base64
 sitename = ""
 username = ""
