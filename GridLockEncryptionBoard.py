@@ -57,7 +57,7 @@ print("All tests successful")
 def byteTo_integer(input):
     #we need to take the entire byte value and subtract the prefix that means "string".
     raw_num = int(int.from_bytes(input, "little"))          #turning the whole index into one massive number
-    utf32rep = raw_num - 133144051455                   #subtracting the "string" prefix, 137439018751
+    utf32rep = raw_num - 133144051455                   #subtracting the "string" prefix, 133144051455
     return utf32rep         #return only the part of the number that represents the bytes value on the utf-32 table
 
 #turn integer back to byte
