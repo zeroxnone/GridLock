@@ -1,1 +1,5 @@
+1. Finish decryption by fixing oversized integers issue.
 
+2. Add file index reading based on seperated values once file format is decided.
+
+3. Display indexed lists in UI after updating
