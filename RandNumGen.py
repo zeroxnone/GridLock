@@ -1,8 +1,20 @@
-import random # importing "random" for random operations
+import random
 
-def RandomNumberGenerator_3000to40000():        #defining a function RandomNumberGenerator_3000to40000() for the task
-x=random.randrange(3000, 40001)                 #using randrange() to generate in range from 3000 to 40000, default index starting at 0
-return x #returning the value
+def random_num(x,y):
+  num = random.randint(x,y)
+  return num
 
-#x=RandomNumberGenerator_3000to40000()                             #calling the function and saving it in variable "x"
-#print("A random number from range 3000 to 40,000 is :", x)        #printing the number stored in "x"
+
+
+k = random_num(0,20)
+
+def random_num_prime(m):
+  if m > 1:
+    for i in range(2, m):
+        if (m % i) == 0:
+            return f"{m} is not prime"
+            break
+    else:
+      return m
+
+#print(random_num_prime(k))
