@@ -1,3 +1,4 @@
+#updated encryption board
 test_unique_key = "Filler_Unique_key"
 test_info = "Jacob1234567¶¶Mike12!^"
 
