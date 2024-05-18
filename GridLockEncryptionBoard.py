@@ -109,13 +109,13 @@ def div_byte(thebyte,divvalue):  #turn a byte into a number, add to it, then put
 #print(byteTo_integer(flatarr[0]))
 #print(integerTo_byte(byteTo_integer(flatarr[0])))
 
-print("testing addition (adding 300)")
-print(addTo_byte(flatarr[0],300))
-print(byteTo_char(addTo_byte(flatarr[0],300)))
+#print("testing addition (adding 300)")
+#print(addTo_byte(flatarr[0],300))
+#print(byteTo_char(addTo_byte(flatarr[0],300)))
 
-print("testing multiplication (multiplying by 800)")
-print(mul_byte(flatarr[0],320))
-print(byteTo_char(mul_byte(flatarr[0],700)))
+#print("testing multiplication (multiplying by 800)")
+#print(mul_byte(flatarr[0],320))
+#print(byteTo_char(mul_byte(flatarr[0],700)))
 
 #now we try putting each value on a grid, given a test size:
 
